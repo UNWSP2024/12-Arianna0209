@@ -7,6 +7,8 @@
 
 import tkinter
 
+import tkinter.messagebox
+
 class CallRate:
     def __init__(self):
         # Create and title the window.
@@ -18,7 +20,6 @@ class CallRate:
         self.prompt_frame = tkinter.Frame(self.window)
         self.rate_category_frame = tkinter.Frame(self.window)
         self.minutes_frame = tkinter.Frame(self.window)
-        self.call_price_frame = tkinter.Frame(self.window)
         self.button_frame = tkinter.Frame(self.window)
 
 
@@ -73,21 +74,6 @@ class CallRate:
         self.minute_entry.pack(side='left')
 
 
-        # Fill the call price frame:
-        # Create the text before the price.
-        self.price_text = tkinter.Label(self.call_price_frame, text='The cost of your call is:')
-
-        # Create the StringVar object.
-        self.price = tkinter.StringVar()
-
-        # Create the price label.
-        self.price_label = tkinter.Label(self.call_price_frame, textvariable=self.price)
-
-        # Pack the labels.
-        self.price_text.pack(side='left')
-        self.price_label.pack(side='left')
-
-
         # Fill the button frame:
         # Create the calculate price button.
         self.calculate_price = tkinter.Button(self.button_frame, text='Calculate Price',
@@ -105,12 +91,12 @@ class CallRate:
         self.prompt_frame.pack()
         self.rate_category_frame.pack()
         self.minutes_frame.pack(pady=5)
-        self.call_price_frame.pack(pady=5)
-        self.button_frame.pack()
+        self.button_frame.pack(pady=5)
 
 
         # Tkinter main loop.
         self.window.mainloop()
+
 
     # Define the function that calculates the call price.
     def calculate(self):
@@ -124,8 +110,8 @@ class CallRate:
         # by the number of minutes.
         price = rate * minutes
 
-        # Set the product as the price.
-        self.price.set(f'${price:.2f}')
+        # Display the price in an infobox.
+        tkinter.messagebox.showinfo('Price', f'The price of your call is ${price:.2f}')
 
 
 if __name__ == '__main__':

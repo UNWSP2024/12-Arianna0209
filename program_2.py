@@ -41,7 +41,7 @@ class JoeAutomotive:
         self.total = tkinter.StringVar()
 
         # Create a label for the text before the total.
-        self.text_total = tkinter.Label(self.total_frame, text='Total:')
+        self.text_total = tkinter.Label(self.total_frame, text=f'Total:')
 
         # Create a label for the total.
         self.total_label = tkinter.Label(self.total_frame, textvariable=self.total)
